@@ -15,3 +15,15 @@ function getComputerChoice() {
 function getHumanChoice() {
     return prompt("Rock Paper Scissors! Choose your play:").toLowerCase()
 }
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`Tie! Player and COM both chose ${humanChoice}.`);
+    } else if (humanChoice === "rock" && computerChoice === "paper"
+            || humanChoice === "paper" && computerChoice === "scissors"
+            || humanChoice === "scissors" && computerChoice === "rock") {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+    } else {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    }
+}
