@@ -8,3 +8,7 @@ function getComputerChoice() {
         return "paper"
     }
 }
+
+function getHumanChoice() {
+    return prompt("Rock Paper Scissors! Choose your play:").toLowerCase()
+}
