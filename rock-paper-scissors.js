@@ -54,10 +54,6 @@ function playGame() {
         }
     }
 
-    for (let i = 0; i <= 4; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-
     if (humanScore > computerScore) {
 
         console.log(`You win! Final score:
