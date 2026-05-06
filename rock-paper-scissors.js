@@ -71,7 +71,10 @@ function checkScore() {
 let humanScore = 0;
 let computerScore = 0;
 
-let btns = document.querySelector("#Choices");
+const scoreDisplay = document.querySelector("#Score");
+scoreDisplay.textContent = "Player: 0 COM: 0";
+
+const btns = document.querySelector("#Choices");
 btns.addEventListener("click", (event) => {
     let target = event.target;
     switch (target.id) {
@@ -85,5 +88,6 @@ btns.addEventListener("click", (event) => {
             playRound("scissors", getComputerChoice());
             break;
     }
+    scoreDisplay.textContent=`Player: ${humanScore} COM: ${computerScore}`;
     checkScore();
 });
