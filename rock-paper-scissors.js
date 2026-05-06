@@ -25,13 +25,13 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {
 
-        console.log(`Tie! Player and COM both chose ${capitalize(humanChoice)}.`);
+        roundResult.textContent = `Tie! Player and COM both chose ${capitalize(humanChoice)}.`;
 
     } else if (humanChoice === "rock" && computerChoice === "paper"
         || humanChoice === "paper" && computerChoice === "scissors"
         || humanChoice === "scissors" && computerChoice === "rock") {
 
-        console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
+        roundResult.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`;
         computerScore += 1;
 
     } else {
@@ -40,7 +40,7 @@ function playRound(humanChoice, computerChoice) {
         // If user is winning with whacky inputs like "gun" this is why.
         // I chose to forego input sanitation or extra checks here as
         // the assignment doesn't really require it.
-        console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
+        roundResult.textContent = `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`;
         humanScore += 1;
     }
 }
@@ -49,21 +49,21 @@ function checkScore() {
     if (humanScore < 5 && computerScore < 5) return
     if (humanScore > computerScore) {
 
-        alert(`You win! Final score:
+        gameStatus.textContent = `You win! Final score:
             Human: ${humanScore}
-            COM: ${computerScore}`);
+            COM: ${computerScore}`;
 
     } else if (computerScore > humanScore) {
 
-        alert(`You lose! Final score:
+        gameStatus.textContent = `You lose! Final score:
             Human: ${humanScore}
-            COM: ${computerScore}`);
+            COM: ${computerScore}`;
 
     } else {
 
-        alert(`Tie! Final score:
+        gameStatus.textContent = `Tie! Final score:
             Human: ${humanScore}
-            COM: ${computerScore}`);
+            COM: ${computerScore}`;
 
     }
 }
@@ -71,12 +71,14 @@ function checkScore() {
 let humanScore = 0;
 let computerScore = 0;
 
-const scoreDisplay = document.querySelector("#Score");
+const gameStatus = document.querySelector("#game-status");
+const roundResult = document.querySelector("#round-result");
+const scoreDisplay = document.querySelector("#scoreboard");
 scoreDisplay.textContent = "Player: 0 COM: 0";
 
 const btns = document.querySelector("#Choices");
 btns.addEventListener("click", (event) => {
-    let target = event.target;
+    const target = event.target;
     switch (target.id) {
         case 'Rock':
             playRound("rock", getComputerChoice());
@@ -88,6 +90,6 @@ btns.addEventListener("click", (event) => {
             playRound("scissors", getComputerChoice());
             break;
     }
-    scoreDisplay.textContent=`Player: ${humanScore} COM: ${computerScore}`;
+    scoreDisplay.textContent = `Player: ${humanScore} COM: ${computerScore}`;
     checkScore();
 });
